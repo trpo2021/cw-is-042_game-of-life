@@ -84,8 +84,7 @@ void life(char* original, settings* options)
         for (int j = 0; j < options->height; j++) {
             //   *(original + i * size + j) = original [i][j];
             int cell = surch_nighbors(original, options, i, j);
-            generational_change(
-                    original, cell, &future[0][0], i, j, options->width);
+            generational_change(original, cell, &future[0][0], i, j, options->width);
         }
     }
     copy_world(original,&future[0][0], options);
