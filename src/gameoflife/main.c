@@ -1,27 +1,24 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include <unistd.h>
-#include <libgameoflife/settings.h>
-#include <libgameoflife/life.h>
 #include <libgameoflife/life.c>
+#include <libgameoflife/life.h>
+#include <libgameoflife/settings.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
+int main()
+{
+    int size = 15;
+    settings options;
+    options.width = size;
+    options.height = size;
+    char original[options.width][options.height];
+    char future[options.width][options.height];
 
-
-int main(){
-
-int size = 15;
-settings options;
-options.width = size;
-options.height = size;
-char original [options.width][options.height];
-char future [options.width][options.height];
-
-   
-	for (int i = 0; i < options.width; i++){ 
-		for (int j = 0; j < options.height; j++){
-            original [i][j] = 0;
-            original [i][j] = 0;
-        } 
+    for (int i = 0; i < options.width; i++) {
+        for (int j = 0; j < options.height; j++) {
+            original[i][j] = 0;
+            original[i][j] = 0;
+        }
     }
     original[3][3] = 1;
     original[3][4] = 1;
@@ -80,19 +77,19 @@ char future [options.width][options.height];
         // system("cls");//windows
 
         life(&original[0][0], &options);
-        
-                        for (int i = 0; i < options.width; i++) {
-                                for (int j = 0; j < options.height; j++) {
-                                        if (original[i][j] == 1)
-                                                printf("a%c", original[i][j]);
-                                        else
-                                                printf(" ");
-                                        original [i][j] = future [i][j];
-                                        printf(" ");
-                                }
-                                printf("\n");
-                        }
-        
-	usleep (500000);
-	}
+
+        for (int i = 0; i < options.width; i++) {
+            for (int j = 0; j < options.height; j++) {
+                if (original[i][j] == 1)
+                    printf("a%c", original[i][j]);
+                else
+                    printf(" ");
+                original[i][j] = future[i][j];
+                printf(" ");
+            }
+            printf("\n");
+        }
+
+        usleep(500000);
+    }
 }
