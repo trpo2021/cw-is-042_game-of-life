@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <libgameoflife/settings.h>
 #include <libgameoflife/life.h>
+#include <libgameoflife/life.c>
 
 
 
@@ -13,7 +14,7 @@ settings options;
 options.width = size;
 options.height = size;
 char original [options.width][options.height];
-///char future [options.width][options.height];
+char future [options.width][options.height];
 
    
 	for (int i = 0; i < options.width; i++){ 
@@ -79,11 +80,11 @@ char original [options.width][options.height];
         // system("cls");//windows
 
         life(&original[0][0], &options);
-        /*
+        
                         for (int i = 0; i < options.width; i++) {
                                 for (int j = 0; j < options.height; j++) {
                                         if (original[i][j] == 1)
-                                                printf("%c", original[i][j]);
+                                                printf("a%c", original[i][j]);
                                         else
                                                 printf(" ");
                                         original [i][j] = future [i][j];
@@ -91,7 +92,7 @@ char original [options.width][options.height];
                                 }
                                 printf("\n");
                         }
-        */
+        
 	usleep (500000);
 	}
 }
