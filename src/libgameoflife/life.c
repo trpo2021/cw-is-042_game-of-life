@@ -88,6 +88,6 @@ void life(char* original, settings* options)
                     original, cell, &future[0][0], i, j, options->width);
         }
     }
-    copy_world(original,&future[0][0], options );
-    cmp_world(original ,&future[0][0], options );
+    copy_world(original,&future[0][0], options);
+    cmp_world(original ,&future[0][0], options);
 }
