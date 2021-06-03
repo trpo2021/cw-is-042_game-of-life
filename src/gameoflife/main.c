@@ -73,8 +73,8 @@ int main()
     while (1) {
         system("clear"); // linux
 
-        for (int i = 0; i < options.width; i++) {
-            for (int j = 0; j < options.height; j++) {
+        for (int i = 0; i < options.height; i++) {
+            for (int j = 0; j < options.width; j++) {
                 if (original[i][j] == 1)
                     printf("a%c", original[i][j]);
                 else
