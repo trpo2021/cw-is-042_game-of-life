@@ -12,11 +12,9 @@ int main()
     options.width = size;
     options.height = size;
     char original[options.width][options.height];
-    char future[options.width][options.height];
 
     for (int i = 0; i < options.width; i++) {
         for (int j = 0; j < options.height; j++) {
-            original[i][j] = 0;
             original[i][j] = 0;
         }
     }
@@ -74,9 +72,6 @@ int main()
 
     while (1) {
         system("clear"); // linux
-        // system("cls");//windows
-
-        life(&original[0][0], &options);
 
         for (int i = 0; i < options.width; i++) {
             for (int j = 0; j < options.height; j++) {
@@ -84,12 +79,11 @@ int main()
                     printf("a%c", original[i][j]);
                 else
                     printf(" ");
-                original[i][j] = future[i][j];
                 printf(" ");
             }
             printf("\n");
         }
-
+        life(&original[0][0], &options);
         usleep(500000);
     }
 }
