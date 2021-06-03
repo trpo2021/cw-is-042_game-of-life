@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-//Подсчёт соседей
+// Counting neighbors
 int surch_nighbors(char* original, settings* options, int i, int j)
 {
     int cell = 0;
@@ -38,7 +38,8 @@ int surch_nighbors(char* original, settings* options, int i, int j)
     }
     return cell;
 }
-//Генерация нового покаления
+
+// Generation of a new generation
 void generational_change(
         char* original, int cell, char* future, int i, int j, int size)
 {
@@ -54,7 +55,8 @@ void generational_change(
             *(future + i * size + j) = 0;
     }
 }
-// Копирование игрового мира. Используется для сохранения предыдущего поколения
+
+// Copying the game world. Used to save the previous generation
 void copy_world(char* original, char* future, settings* options)
 {
     for (int i = 0; i < options->width; i++) {
@@ -64,7 +66,8 @@ void copy_world(char* original, char* future, settings* options)
         }
     }
 }
-// Сравнение игровых миров текущего и предыдущего поколения
+
+// Comparison of current and previous generation game worlds
 int cmp_world(char* original, char* future, settings* options)
 {
     for (int i = 0; i < options->width; i++) {
@@ -93,6 +96,6 @@ void life(char* original, settings* options)
                     original, cell, &future[0][0], i, j, options->width);
         }
     }
-    cmp_world(original ,&future[0][0], options );
-    copy_world(original,&future[0][0], options );
+    cmp_world(original, &future[0][0], options);
+    copy_world(original, &future[0][0], options);
 }
