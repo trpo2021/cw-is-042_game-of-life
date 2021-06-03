@@ -80,7 +80,7 @@ int cmp_world(char* original, char* future, Settings* options)
     return 0;
 }
 
-void life(char* original, Settings* options)
+int life(char* original, Settings* options)
 {
     char future[options->height][options->width];
     for (int i = 0; i < options->height; i++) {
@@ -96,6 +96,8 @@ void life(char* original, Settings* options)
                     original, cell, &future[0][0], i, j, options->height);
         }
     }
-    cmp_world(original, &future[0][0], options);
+    if (cmp_world(original, &future[0][0], options) == 0)
+        return -1;
     copy_world(original, &future[0][0], options);
+    return 0;
 }

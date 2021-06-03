@@ -1,5 +1,8 @@
+#include <libgameoflife/generation.c>
+#include <libgameoflife/generation.h>
 #include <libgameoflife/life.c>
 #include <libgameoflife/life.h>
+#include <libgameoflife/menu.c>
 #include <libgameoflife/menu.h>
 #include <libgameoflife/output.c>
 #include <libgameoflife/output.h>
@@ -10,8 +13,23 @@
 
 int main()
 {
-    Settings settings;
-    settings.width = 30;
-    settings.height = 30;
-    settings.speed = 2;
+    Settings options;
+    options.width = 30;
+    options.height = 30;
+    options.speed = 2;
+
+    if (menu(&options) == -1)
+        return 0;
+
+    char field[options.height][options.width];
+    for (int i = 0; i < options.height; i++) {
+        for (int j = 0; j < options.width; j++) {
+            field[i][j] = 0;
+        }
+    }
+
+    first_gen(&field[0][0], &options);
+    output(&field[0][0], &options);
+    while (life(&field[0][0], &options) == 0)
+        output(&field[0][0], &options);
 }

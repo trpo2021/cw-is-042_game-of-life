@@ -2,6 +2,7 @@
 
 #include <libgameoflife/settings.h>
 
-int menu (Settings *settings);
-void set (Settings *settings);
-void change_size_field (Settings* settings);
+int menu(Settings* settings);
+int set(Settings* settings);
+int change_size_field(Settings* settings);
+int change_speed(Settings* settings);
