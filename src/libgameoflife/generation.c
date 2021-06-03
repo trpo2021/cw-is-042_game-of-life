@@ -2,12 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char* first_gen(Settings* settings)
+void first_gen(char* field, Settings* settings)
 {
-    char* field;
-    field = malloc(sizeof(char) * settings->width * settings->height);
     reading_from_file(field, settings);
-    return (field);
 }
 
 int reading_from_file(char* array, Settings* settings)
@@ -21,16 +18,19 @@ int reading_from_file(char* array, Settings* settings)
     char element;
     int i = 0;
     int j = 0;
-    while ((element = fgetc(fileofgeneration)) != EOF) {
-        if ((element == 10) && (i < settings->height)) {
-            i++;
-            j = 0;
-        } else if ((element == ' ') && (j < settings->width)) {
-            *(array + i * settings->width + j) = 0;
-            j++;
-        } else {
-            *(array + i * settings->width + j) = 1;
-            j++;
+
+    for (i = 0; i < settings->height; i++) {
+        for (j = 0; j < settings->width; j++) {
+            element = fgetc(fileofgeneration);
+            if (element == '\n') {
+                i++;
+                j = 0;
+                continue;
+            }
+            if (element == ' ')
+                *(array + i * settings->width + j) = 0;
+            else if (element == 'o')
+                *(array + i * settings->width + j) = 1;
         }
     }
     fclose(fileofgeneration);

@@ -1,5 +1,5 @@
 #pragma once
 #include <libgameoflife/settings.h>
 
-char* first_gen(Settings* settings);
+void first_gen(char* field, Settings* settings);
 int reading_from_file(char* array, Settings* settings);
