@@ -16,7 +16,7 @@ int main()
     Settings options;
     options.width = 20;
     options.height = 20;
-    options.speed = 5;
+    options.speed = 10;
 
     int res_menu;
     res_menu = menu(&options);
