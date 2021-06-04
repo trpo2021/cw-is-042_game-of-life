@@ -7,6 +7,7 @@ CPPFLAGS = -I src -MP -MMD
 BIN_DIR = bin
 OBJ_DIR = obj
 SRC_DIR = src
+TST_DIR = test
 
 APP_PATH = $(BIN_DIR)/$(APP_NAME)
 LIB_PATH = $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)/$(LIB_NAME).a
@@ -41,6 +42,18 @@ $(BIN_DIR):
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)/$(SRC_DIR)/$(APP_NAME)
 	mkdir -p $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)
+
+.PHONY: test
+test: bin/test
+
+bin/test: obj/test/main.o obj/test/firsttest.o $(LIB_OBJECTS) test/ctest.h
+	$(CC) -Wall -I src obj/test/main.o obj/test/firsttest.o $(LIB_OBJECTS) test/ctest.h -o bin/test
+
+obj/test/main.o: test/main.c
+	$(CC) -c -Wall -I src test/main.c -o obj/test/main.o
+
+obj/test/firsttest.o: test/firsttest.c
+	$(CC) -c -Wall -I src test/firsttest.c -o  obj/test/firsttest.o 
 
 .PHONY: clean
 clean:
