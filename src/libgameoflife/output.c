@@ -12,7 +12,7 @@ void output(char* original, Settings* options)
 
     for (int i = 0; i < options->height; i++) {
         for (int j = 0; j < options->width; j++) {
-            if (*(original + i * options->height + j) == 1)
+            if (*(original + i * options->width + j) == 1)
                 printf("%c", c);
             else
                 printf(" ");

@@ -9,31 +9,31 @@ int surch_nighbors(char* original, Settings* options, int i, int j)
 {
     int cell = 0;
     if ((j - 1) >= 0) {
-        if (*(original + i * options->height + (j - 1)) == 1)
+        if (*(original + i * options->width + (j - 1)) == 1)
             cell++; // mid left
         if ((i - 1) >= 0)
-            if (*(original + (i - 1) * options->height + (j - 1)) == 1)
+            if (*(original + (i - 1) * options->width + (j - 1)) == 1)
                 cell++; // up left
         if ((i + 1) < options->height)
-            if (*(original + (i + 1) * options->height + (j - 1)) == 1)
+            if (*(original + (i + 1) * options->width + (j - 1)) == 1)
                 cell++; // down left
     }
     if ((j + 1) < options->width) {
-        if (*(original + i * options->height + (j + 1)) == 1)
+        if (*(original + i * options->width + (j + 1)) == 1)
             cell++; // mid right
         if ((i - 1) >= 0)
-            if (*(original + (i - 1) * options->height + (j + 1)) == 1)
+            if (*(original + (i - 1) * options->width + (j + 1)) == 1)
                 cell++; // up right
         if ((i + 1) < options->height)
-            if (*(original + (i + 1) * options->height + (j + 1)) == 1)
+            if (*(original + (i + 1) * options->width + (j + 1)) == 1)
                 cell++; // down right
     }
     if ((i - 1) >= 0) {
-        if (*(original + (i - 1) * options->height + j) == 1)
+        if (*(original + (i - 1) * options->width + j) == 1)
             cell++; // up mid
     }
     if ((i + 1) < options->height) {
-        if (*(original + (i + 1) * options->height + j) == 1)
+        if (*(original + (i + 1) * options->width + j) == 1)
             cell++; // down mid
     }
     return cell;
@@ -61,8 +61,8 @@ void copy_world(char* original, char* future, Settings* options)
 {
     for (int i = 0; i < options->height; i++) {
         for (int j = 0; j < options->width; j++) {
-            *(original + i * options->height + j)
-                    = *(future + i * options->height + j);
+            *(original + i * options->width + j)
+                    = *(future + i * options->width + j);
         }
     }
 }
@@ -72,8 +72,8 @@ int cmp_world(char* original, char* future, Settings* options)
 {
     for (int i = 0; i < options->height; i++) {
         for (int j = 0; j < options->width; j++) {
-            if (*(original + i * options->height + j)
-                != *(future + i * options->height + j))
+            if (*(original + i * options->width + j)
+                != *(future + i * options->width + j))
                 return -1;
         }
     }
@@ -93,7 +93,7 @@ int life(char* original, Settings* options)
         for (int j = 0; j < options->width; j++) {
             int cell = surch_nighbors(original, options, i, j);
             generational_change(
-                    original, cell, &future[0][0], i, j, options->height);
+                    original, cell, &future[0][0], i, j, options->width);
         }
     }
     if (cmp_world(original, &future[0][0], options) == 0)
