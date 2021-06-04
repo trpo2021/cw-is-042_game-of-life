@@ -18,9 +18,6 @@ int main()
     options.height = 30;
     options.speed = 2;
 
-    if (menu(&options) == -1)
-        return 0;
-
     char field[options.height][options.width];
     for (int i = 0; i < options.height; i++) {
         for (int j = 0; j < options.width; j++) {
@@ -28,7 +25,13 @@ int main()
         }
     }
 
-    first_gen(&field[0][0], &options);
+    int res_menu;
+    res_menu = menu(&options);
+
+    if (res_menu == -1)
+        return 0;
+
+    first_gen(&field[0][0], &options, res_menu);
     output(&field[0][0], &options);
     while (life(&field[0][0], &options) == 0)
         output(&field[0][0], &options);

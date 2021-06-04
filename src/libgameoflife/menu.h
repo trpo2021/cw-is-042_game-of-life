@@ -6,3 +6,4 @@ int menu(Settings* settings);
 int set(Settings* settings);
 int change_size_field(Settings* settings);
 int change_speed(Settings* settings);
+int choose_gen();

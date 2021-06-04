@@ -11,7 +11,7 @@ int menu(Settings* settings)
     printf("3 - exit\n");
     scanf("%d", &command);
     if (command == 1)
-        return 1;
+        return choose_gen();
     if (command == 3)
         return -1;
     if (command == 2)
@@ -54,4 +54,14 @@ int change_speed(Settings* settings)
     scanf("%f", &settings->speed);
     return set(settings);
     return 0;
+}
+
+int choose_gen()
+{
+    int command;
+    system("clear");
+    printf("1 - from file\n");
+    printf("2 - random\n");
+    scanf("%d", &command);
+    return command;
 }
