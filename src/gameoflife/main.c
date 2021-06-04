@@ -30,7 +30,8 @@ int main()
         }
     }
 
-    first_gen(&field[0][0], &options, res_menu);
+    if (first_gen(&field[0][0], &options, res_menu) == -1)
+        return -1;
     output(&field[0][0], &options);
     while (life(&field[0][0], &options) == 0)
         output(&field[0][0], &options);

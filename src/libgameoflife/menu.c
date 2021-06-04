@@ -8,13 +8,24 @@ int menu(Settings* settings)
     system("clear");
     int command;
     printf("1 - random\n");
-    printf("3 - exit\n");
+    printf("2 - galaxy\n");
+    printf("3 - fish\n");
+    printf("4 - gun\n");
+    printf("5 - x\n");
+    printf("6 - exit\n");
     scanf("%d", &command);
-    if (command == 3)
+    if (command == 6)
         return -1;
     else if (command == 1)
         return set_random(settings);
-
+    else if (command == 2)
+        return setup_galaxy(settings);
+    else if (command == 3)
+        return setup_fish(settings);
+    else if (command == 4)
+        return setup_gun(settings);
+    else if (command == 5)
+        return setup_x(settings);
     return 0;
 }
 
@@ -36,6 +47,31 @@ int set_random(Settings* settings)
         return change_speed(settings);
 
     return 0;
+}
+
+int setup_galaxy(Settings* settings)
+{
+    settings->width = 20;
+    settings->height = 20;
+    return 2;
+}
+int setup_fish(Settings* settings)
+{
+    settings->width = 100;
+    settings->height = 18;
+    return 3;
+}
+int setup_gun(Settings* settings)
+{
+    settings->width = 50;
+    settings->height = 50;
+    return 4;
+}
+int setup_x(Settings* settings)
+{
+    settings->width = 30;
+    settings->height = 30;
+    return 5;
 }
 
 int change_size_field(Settings* settings)

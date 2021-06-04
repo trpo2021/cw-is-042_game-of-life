@@ -1,17 +1,28 @@
 #include <libgameoflife/generation.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
-void first_gen(char* field, Settings* settings, int num_gen)
+int first_gen(char* field, Settings* settings, int num_gen)
 {
+    char namefile[20] = "../shapes/";
     if (num_gen == 1)
         random_gen(field, settings);
+    else if (num_gen == 2) {
+        strcat(namefile, "galaxy");
+    } else if (num_gen == 3) {
+        strcat(namefile, "fish");
+    } else if (num_gen == 4) {
+        strcat(namefile, "gun");
+    } else if (num_gen == 5) {
+        strcat(namefile, "x");
+    }
+    return reading_from_file(field, settings, &namefile[0]);
 }
 
-int reading_from_file(char* array, Settings* settings)
+int reading_from_file(char* array, Settings* settings, char* namefile)
 {
-    char* namefile = "firstgeneration.txt";
     FILE* fileofgeneration;
     if ((fileofgeneration = fopen(namefile, "r")) == NULL) {
         printf("Couldn't open the file\n");
