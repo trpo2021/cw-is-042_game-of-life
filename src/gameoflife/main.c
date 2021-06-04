@@ -14,9 +14,14 @@
 int main()
 {
     Settings options;
-    options.width = 30;
-    options.height = 30;
-    options.speed = 2;
+    options.width = 20;
+    options.height = 20;
+    options.speed = 5;
+
+    int res_menu;
+    res_menu = menu(&options);
+    if (res_menu == -1)
+        return 0;
 
     char field[options.height][options.width];
     for (int i = 0; i < options.height; i++) {
@@ -24,12 +29,6 @@ int main()
             field[i][j] = 0;
         }
     }
-
-    int res_menu;
-    res_menu = menu(&options);
-
-    if (res_menu == -1)
-        return 0;
 
     first_gen(&field[0][0], &options, res_menu);
     output(&field[0][0], &options);
