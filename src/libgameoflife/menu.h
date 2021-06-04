@@ -3,8 +3,7 @@
 #include <libgameoflife/settings.h>
 
 int menu(Settings* settings);
-int set(Settings* settings);
+int set_random(Settings* settings);
 int change_size_field(Settings* settings);
 int change_speed(Settings* settings);
-int choose_gen();
 int check(int size, int command);

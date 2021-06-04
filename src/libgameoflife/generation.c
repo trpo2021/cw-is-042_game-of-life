@@ -6,8 +6,6 @@
 void first_gen(char* field, Settings* settings, int num_gen)
 {
     if (num_gen == 1)
-        reading_from_file(field, settings);
-    else if (num_gen == 2)
         random_gen(field, settings);
 }
 
