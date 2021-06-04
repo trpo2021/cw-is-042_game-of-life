@@ -46,14 +46,20 @@ $(OBJ_DIR):
 .PHONY: test
 test: bin/test
 
-bin/test: obj/test/main.o obj/test/firsttest.o $(LIB_OBJECTS) test/ctest.h
-	$(CC) -Wall -I src obj/test/main.o obj/test/firsttest.o $(LIB_OBJECTS) test/ctest.h -o bin/test
+bin/test: obj/test/main.o obj/test/firsttest.o obj/test/copytest.o obj/test/readingfile.o $(LIB_OBJECTS) test/ctest.h
+	$(CC) -Wall -I src obj/test/main.o obj/test/firsttest.o obj/test/copytest.o obj/test/readingfile.o $(LIB_OBJECTS) test/ctest.h -o bin/test
 
-obj/test/main.o: test/main.c
+obj/test/main.o: test/main.c 
 	$(CC) -c -Wall -I src test/main.c -o obj/test/main.o
 
 obj/test/firsttest.o: test/firsttest.c
 	$(CC) -c -Wall -I src test/firsttest.c -o  obj/test/firsttest.o 
+
+obj/test/copytest.o: test/copytest.c
+	$(CC) -c -Wall -I src test/copytest.c -o  obj/test/copytest.o 
+
+obj/test/readingfile.o: test/readingfile.c
+	$(CC) -c -Wall -I src test/readingfile.c -o  obj/test/readingfile.o
 
 .PHONY: clean
 clean:
