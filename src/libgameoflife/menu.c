@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <libgameoflife/menu.h>
+#include <libgameoflife/setup.h>
 #include <stdio.h>
 #include <stdlib.h>
 
