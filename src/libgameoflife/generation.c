@@ -50,12 +50,11 @@ int reading_from_file(char* array, Settings* settings, char* namefile)
     return 0;
 }
 
-int random_gen(char* array, Settings* settings)
+void random_gen(char* array, Settings* settings)
 {
     int max = 1, min = 0;
     srand(time(NULL));
     for (int i = 0; i < settings->height * settings->width; i++) {
         array[i] = min + rand() % (max - min + 1);
     }
-    return 0;
 }
