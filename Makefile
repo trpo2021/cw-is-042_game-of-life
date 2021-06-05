@@ -50,7 +50,7 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)
 	mkdir -p $(OBJ_DIR)/$(TST_NAME)
 
-.PHONY: testing
+.PHONY: test
 test: $(TST_PATH)
 
 $(TST_PATH): $(TST_OBJECTS) $(LIB_OBJECTS) $(LIB_PATH)
