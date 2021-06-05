@@ -3,6 +3,7 @@ LIB_NAME = libgameoflife
 TST_NAME = testgameoflife
 
 CFLAGS = -Wall -Wextra -Werror
+TFLAGS = -Wall
 CPPFLAGS = -I src -MP -MMD
 
 BIN_DIR = bin
@@ -52,8 +53,8 @@ $(OBJ_DIR):
 .PHONY: testing
 test: $(TST_PATH)
 
-$(TST_PATH): $(TST_OBJECTS) $(LIB_OBJECTS) $(LIB_PATH) 
-	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@
+$(TST_PATH): $(TST_OBJECTS) $(LIB_OBJECTS) $(LIB_PATH)
+	$(CC) $(TFLAGS) $(CPPFLAGS) $^ -o $@
 
 $(OBJ_DIR)/$(TST_DIR)/%.o: $(TST_SOURCES).c
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@

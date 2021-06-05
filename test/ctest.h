@@ -179,8 +179,8 @@ void assert_str(const char* exp, const char* real, const char* caller, int line)
 void assert_wstr(const wchar_t *exp, const wchar_t *real, const char* caller, int line);
 #define ASSERT_WSTR(exp, real) assert_wstr(exp, real, __FILE__, __LINE__)
 
-void assert_data(const unsigned char* exp, size_t expsize,
-                 const unsigned char* real, size_t realsize,
+void assert_data(const char* exp, size_t expsize,
+                 const char* real, size_t realsize,
                  const char* caller, int line);
 #define ASSERT_DATA(exp, expsize, real, realsize) \
     assert_data(exp, expsize, real, realsize, __FILE__, __LINE__)
@@ -348,8 +348,8 @@ void assert_wstr(const wchar_t *exp, const wchar_t *real, const char* caller, in
     }
 }
 
-void assert_data(const unsigned char* exp, size_t expsize,
-                 const unsigned char* real, size_t realsize,
+void assert_data(const char* exp, size_t expsize,
+                 const char* real, size_t realsize,
                  const char* caller, int line) {
     size_t i;
     if (expsize != realsize) {
