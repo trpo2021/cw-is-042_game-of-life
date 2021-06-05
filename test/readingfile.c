@@ -15,7 +15,7 @@ CTEST(my_tree_test, test3)
         }
     }
 
-    char namefile1[15] = "txt";
+    char namefile1[15] = "../Makefile";
     char namefile2[5] = "tex";
 
     int result1 = reading_from_file(&array[0][0], &options, &namefile1[0]);
