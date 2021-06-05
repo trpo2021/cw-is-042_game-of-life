@@ -34,7 +34,7 @@ all: $(BIN_DIR) $(OBJ_DIR) $(SRC_DIR) $(RES_DIR) $(APP_PATH)
 -include $(DEPS)
 
 $(APP_PATH): $(APP_OBJECTS) $(LIB_PATH)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@
 
 $(LIB_PATH): $(LIB_OBJECTS)
 	ar rcs $@ $^
@@ -61,4 +61,4 @@ $(OBJ_DIR)/$(TST_DIR)/%.o: $(TST_SOURCES).c
 
 .PHONY: clean
 clean:
-	-rm -f $(APP_PATH) $(LIB_PATH) $(TST_PATH) $(APP_OBJECTS) $(LIB_OBJECTS) $(TST_OBJECTS) $(DEPS) 
+	-rm -f $(APP_PATH) $(LIB_PATH) $(TST_PATH) $(APP_OBJECTS) $(LIB_OBJECTS) $(OBJ_DIR)/$(TST_DIR)/* $(DEPS) 
