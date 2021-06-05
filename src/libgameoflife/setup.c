@@ -41,3 +41,24 @@ int setup_r(Settings* settings)
     settings->height = 30;
     return 6;
 }
+
+int setup_pulsar(Settings* settings)
+{
+    settings->width = 20;
+    settings->height = 20;
+    return 7;
+}
+
+int setup_portraitor(Settings* settings)
+{
+    settings->width = 30;
+    settings->height = 30;
+    return 8;
+}
+
+int setup_eight(Settings* settings)
+{
+    settings->width = 20;
+    settings->height = 20;
+    return 9;
+}

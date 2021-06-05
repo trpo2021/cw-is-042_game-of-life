@@ -19,7 +19,14 @@ int first_gen(char* field, Settings* settings, int num_gen)
         strcat(namefile, "x");
     } else if (num_gen == 6) {
         strcat(namefile, "R-penta");
+    } else if (num_gen == 7) {
+        strcat(namefile, "pulsar");
+    } else if (num_gen == 8) {
+        strcat(namefile, "portraitor");
+    } else if (num_gen == 9) {
+        strcat(namefile, "eight");
     }
+
     return reading_from_file(field, settings, &namefile[0]);
 }
 

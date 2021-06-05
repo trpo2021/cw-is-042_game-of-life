@@ -96,3 +96,51 @@ CTEST(unit_test, setup_r)
     ASSERT_EQUAL(height, options.height);
     ASSERT_EQUAL(6, result);
 }
+
+CTEST(unit_test, setup_pulsar)
+{
+    Settings options;
+
+    int width = 20;
+    int height = 20;
+
+    int result;
+
+    result = setup_pulsar(&options);
+
+    ASSERT_EQUAL(width, options.width);
+    ASSERT_EQUAL(height, options.height);
+    ASSERT_EQUAL(7, result);
+}
+
+CTEST(unit_test, setup_portraitor)
+{
+    Settings options;
+
+    int width = 30;
+    int height = 30;
+
+    int result;
+
+    result = setup_portraitor(&options);
+
+    ASSERT_EQUAL(width, options.width);
+    ASSERT_EQUAL(height, options.height);
+    ASSERT_EQUAL(8, result);
+}
+
+CTEST(unit_test, setup_eight)
+{
+    Settings options;
+
+    int width = 20;
+    int height = 20;
+
+    int result;
+
+    result = setup_eight(&options);
+
+    ASSERT_EQUAL(width, options.width);
+    ASSERT_EQUAL(height, options.height);
+    ASSERT_EQUAL(9, result);
+}

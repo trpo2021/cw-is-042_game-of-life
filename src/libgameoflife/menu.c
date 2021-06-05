@@ -33,7 +33,11 @@ int shoose_shape(Settings* settings)
     printf("3 - gun\n");
     printf("4 - x\n");
     printf("5 - R-penta\n");
-    while ((command = com_input(5)) == -1)
+    printf("6 - pulsar\n");
+    printf("7 - portraitor\n");
+    printf("8 - eight\n");
+
+    while ((command = com_input(8)) == -1)
         ;
     if (command == 1)
         return setup_galaxy(settings);
@@ -45,6 +49,12 @@ int shoose_shape(Settings* settings)
         return setup_x(settings);
     else if (command == 5)
         return setup_r(settings);
+    else if (command == 6)
+        return setup_pulsar(settings);
+    else if (command == 7)
+        return setup_portraitor(settings);
+    else if (command == 8)
+        return setup_eight(settings);
     return 0;
 }
 
