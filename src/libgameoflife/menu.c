@@ -14,7 +14,10 @@ int menu(Settings* settings)
     printf("4 - gun\n");
     printf("5 - x\n");
     printf("6 - exit\n");
-    scanf("%d", &command);
+
+    while ((command = com_input(6)) == -1)
+        ;
+
     if (command == 6)
         return -1;
     else if (command == 1)
@@ -37,9 +40,10 @@ int set_random(Settings* settings)
     printf("1 - start\n");
     printf("2 - field size\n");
     printf("3 - speed\n");
-    scanf("%d", &command);
-    if (check(3, command) == -1)
-        return set_random(settings);
+
+    while ((command = com_input(3)) == -1)
+        ;
+
     if (command == 1)
         return 1;
     if (command == 2)
@@ -53,30 +57,39 @@ int set_random(Settings* settings)
 int change_size_field(Settings* settings)
 {
     system("clear");
-    printf("Enter width\n");
-    scanf("%d", &settings->width);
-    if (check(100, settings->width) == -1)
-        return change_size_field(settings);
-    printf("Enter height\n");
-    scanf("%d", &settings->height);
-    if (check(100, settings->height) == -1)
-        return change_size_field(settings);
+    printf("Enter width(no more than %d)\n", MAXSIZE);
+    while ((settings->width = com_input(MAXSIZE)) == -1)
+        ;
+    printf("Enter height(no more than %d)\n", MAXSIZE);
+    while ((settings->height = com_input(MAXSIZE)) == -1)
+        ;
     return set_random(settings);
-    return 0;
 }
 
 int change_speed(Settings* settings)
 {
     system("clear");
-    printf("Enter speed\n");
-    scanf("%f", &settings->speed);
+    printf("Enter speed (no more than %d)\n", MAXSPEED);
+    while ((settings->speed = com_input(MAXSPEED)) == -1)
+        ;
     return set_random(settings);
-    return 0;
 }
 
-int check(int size, int command)
+int com_input(int size)
 {
-    if ((command < 1) || (command > size))
+    char command[10];
+    scanf("%s", &command[0]);
+    if ((isdigit(command[0]) == 0) || (check(atoi(&command[0]), size)) == -1) {
+        printf("Enter correct command\n");
         return -1;
-    return 0;
+    } else
+        return atoi(&command[0]);
+}
+
+int check(int data, int size)
+{
+    if ((data <= 0) || (data > size))
+        return -1;
+    else
+        return 0;
 }
