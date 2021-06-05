@@ -1,5 +1,6 @@
 APP_NAME = gameoflife
 LIB_NAME = libgameoflife
+TST_NAME = testgameoflife
 
 CFLAGS = -Wall -Wextra -Werror
 CPPFLAGS = -I src -MP -MMD
@@ -11,6 +12,7 @@ TST_DIR = test
 
 APP_PATH = $(BIN_DIR)/$(APP_NAME)
 LIB_PATH = $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)/$(LIB_NAME).a
+TST_PATH = $(BIN_DIR)/$(TST_NAME)
 
 SRC_EXT = c
 
@@ -20,7 +22,10 @@ APP_OBJECTS = $(APP_SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/$(SRC_DIR)/%.o)
 LIB_SOURCES = $(shell find $(SRC_DIR)/$(LIB_NAME) -name '*.$(SRC_EXT)')
 LIB_OBJECTS = $(LIB_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
 
-DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d)
+TST_SOURCES = $(shell find $(TST_DIR) -name '*.$(SRC_EXT)')
+TST_OBJECTS = $(TST_SOURCES:$(TST_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(TST_DIR)/%.o)
+
+DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d) $(TST_OBJECTS:.o=.d)
 
 .PHONY: all
 all: $(BIN_DIR) $(OBJ_DIR) $(SRC_DIR) $(RES_DIR) $(APP_PATH)
@@ -42,19 +47,17 @@ $(BIN_DIR):
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)/$(SRC_DIR)/$(APP_NAME)
 	mkdir -p $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)
+	mkdir -p $(OBJ_DIR)/$(TST_NAME)
 
-.PHONY: test
-test: bin/test
+.PHONY: testing
+test: $(TST_PATH)
 
-bin/test: obj/test/main.o obj/test/firsttest.o $(LIB_OBJECTS) test/ctest.h
-	$(CC) -Wall -I src obj/test/main.o obj/test/firsttest.o $(LIB_OBJECTS) test/ctest.h -o bin/test
+$(TST_PATH): $(TST_OBJECTS) $(LIB_OBJECTS) $(LIB_PATH) 
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@
 
-obj/test/main.o: test/main.c
-	$(CC) -c -Wall -I src test/main.c -o obj/test/main.o
-
-obj/test/firsttest.o: test/firsttest.c
-	$(CC) -c -Wall -I src test/firsttest.c -o  obj/test/firsttest.o 
+$(OBJ_DIR)/$(TST_DIR)/%.o: $(TST_SOURCES).c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
 .PHONY: clean
 clean:
-	-rm -f $(APP_PATH) $(APP_OBJECTS) $(DEPS) $(LIB_PATH)
+	-rm -f $(APP_PATH) $(LIB_PATH) $(TST_PATH) $(APP_OBJECTS) $(LIB_OBJECTS) $(TST_OBJECTS) $(DEPS) 
