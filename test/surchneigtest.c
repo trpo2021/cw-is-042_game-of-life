@@ -2,7 +2,7 @@
 #include <libgameoflife/life.h>
 #include <libgameoflife/settings.h>
 
-CTEST(my_first_test, test1)
+CTEST(unit_test, surch_nighbors)
 {
     Settings options;
     options.width = 5;

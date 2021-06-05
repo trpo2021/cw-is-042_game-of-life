@@ -1,7 +1,7 @@
 #include "ctest.h"
 #include <libgameoflife/menu.h>
 
-CTEST(test_function_check, test)
+CTEST(unit_test, check)
 {
     int size = 100;
     int normal = 50;
@@ -22,9 +22,9 @@ CTEST(test_function_check, test)
     res_lower = check(lower, size);
     res_less = check(less, size);
 
-    ASSERT_EQUAL(res_normal, 0);
-    ASSERT_EQUAL(res_upper, 0);
-    ASSERT_EQUAL(res_more, -1);
-    ASSERT_EQUAL(res_lower, 0);
-    ASSERT_EQUAL(res_less, -1);
+    ASSERT_EQUAL(0, res_normal);
+    ASSERT_EQUAL(0, res_upper);
+    ASSERT_EQUAL(-1, res_more);
+    ASSERT_EQUAL(0, res_lower);
+    ASSERT_EQUAL(-1, res_less);
 }

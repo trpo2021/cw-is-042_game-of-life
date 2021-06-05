@@ -2,7 +2,7 @@
 #include <libgameoflife/life.h>
 #include <libgameoflife/settings.h>
 
-CTEST(my_two_test, test2)
+CTEST(unit, cmp_world)
 {
     Settings options;
     options.width = 5;
