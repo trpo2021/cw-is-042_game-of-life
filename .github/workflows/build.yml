@@ -15,5 +15,8 @@ jobs:
       - name: Build application
         run: make
 
-      - name: test
+      - name: Build test application
         run: make test
+
+      - name: Tesing
+        run: bin/testgameoflife
