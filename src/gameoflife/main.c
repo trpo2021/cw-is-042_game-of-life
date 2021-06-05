@@ -3,6 +3,7 @@
 #include <libgameoflife/menu.h>
 #include <libgameoflife/output.h>
 #include <libgameoflife/settings.h>
+#include <libgameoflife/setup.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -10,9 +11,7 @@
 int main()
 {
     Settings options;
-    options.width = 20;
-    options.height = 20;
-    options.speed = 10;
+    setup(&options);
 
     int res_menu;
     res_menu = menu(&options);

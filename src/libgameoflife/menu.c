@@ -9,26 +9,38 @@ int menu(Settings* settings)
     system("clear");
     int command;
     printf("1 - random\n");
-    printf("2 - galaxy\n");
-    printf("3 - fish\n");
-    printf("4 - gun\n");
-    printf("5 - x\n");
-    printf("6 - exit\n");
+    printf("2 - shapes\n");
+    printf("3 - exit\n");
 
-    while ((command = com_input(6)) == -1)
+    while ((command = com_input(3)) == -1)
         ;
 
-    if (command == 6)
+    if (command == 3)
         return -1;
     else if (command == 1)
         return set_random(settings);
     else if (command == 2)
+        return shoose_shape(settings);
+    return 0;
+}
+
+int shoose_shape(Settings* settings)
+{
+    system("clear");
+    int command;
+    printf("1 - galaxy\n");
+    printf("2 - fish\n");
+    printf("3 - gun\n");
+    printf("4 - x\n");
+    while ((command = com_input(4)) == -1)
+        ;
+    if (command == 1)
         return setup_galaxy(settings);
-    else if (command == 3)
+    else if (command == 2)
         return setup_fish(settings);
-    else if (command == 4)
+    else if (command == 3)
         return setup_gun(settings);
-    else if (command == 5)
+    else if (command == 4)
         return setup_x(settings);
     return 0;
 }

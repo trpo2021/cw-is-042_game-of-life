@@ -1,5 +1,12 @@
 #include <libgameoflife/setup.h>
 
+void setup(Settings* settings)
+{
+    settings->width = 20;
+    settings->height = 20;
+    settings->speed = 5;
+}
+
 int setup_galaxy(Settings* settings)
 {
     settings->width = 20;
@@ -16,8 +23,8 @@ int setup_fish(Settings* settings)
 
 int setup_gun(Settings* settings)
 {
-    settings->width = 50;
-    settings->height = 50;
+    settings->width = 43;
+    settings->height = 43;
     return 4;
 }
 
