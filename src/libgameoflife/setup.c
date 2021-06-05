@@ -4,7 +4,7 @@ void setup(Settings* settings)
 {
     settings->width = 20;
     settings->height = 20;
-    settings->speed = 5;
+    settings->speed = 10;
 }
 
 int setup_galaxy(Settings* settings)
@@ -33,4 +33,11 @@ int setup_x(Settings* settings)
     settings->width = 30;
     settings->height = 30;
     return 5;
+}
+
+int setup_r(Settings* settings)
+{
+    settings->width = 30;
+    settings->height = 30;
+    return 6;
 }

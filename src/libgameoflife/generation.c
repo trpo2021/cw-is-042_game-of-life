@@ -17,6 +17,8 @@ int first_gen(char* field, Settings* settings, int num_gen)
         strcat(namefile, "gun");
     } else if (num_gen == 5) {
         strcat(namefile, "x");
+    } else if (num_gen == 6) {
+        strcat(namefile, "R-penta");
     }
     return reading_from_file(field, settings, &namefile[0]);
 }

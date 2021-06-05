@@ -8,7 +8,7 @@ CTEST(unit_test, setup)
 
     int width = 20;
     int height = 20;
-    int speed = 5;
+    int speed = 10;
 
     setup(&options);
 
@@ -79,4 +79,20 @@ CTEST(unit_test, setup_x)
     ASSERT_EQUAL(width, options.width);
     ASSERT_EQUAL(height, options.height);
     ASSERT_EQUAL(5, result);
+}
+
+CTEST(unit_test, setup_r)
+{
+    Settings options;
+
+    int width = 30;
+    int height = 30;
+
+    int result;
+
+    result = setup_r(&options);
+
+    ASSERT_EQUAL(width, options.width);
+    ASSERT_EQUAL(height, options.height);
+    ASSERT_EQUAL(6, result);
 }
