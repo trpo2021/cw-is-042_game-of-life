@@ -48,7 +48,7 @@ $(BIN_DIR):
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)/$(SRC_DIR)/$(APP_NAME)
 	mkdir -p $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)
-	mkdir -p $(OBJ_DIR)/$(TST_NAME)
+	mkdir -p $(OBJ_DIR)/$(TST_DIR)
 
 .PHONY: test
 test: $(TST_PATH)
